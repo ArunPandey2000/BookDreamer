@@ -42,7 +42,7 @@ html
 					div.row
 						div.col-md-12
 							div.input-group#adv-search
-								input.form-control(type="text" placeholder="Get recommendations" name="inputText" form="form1")
+								input.form-control(type="text" placeholder="Get recommendations! Click the arrow for more filter options!" name="inputText" form="form1")
 								div.input-group-btn
 									div.btn-group(role="group")
 										div.dropdown.dropdown-lg
@@ -50,14 +50,6 @@ html
 												span.caret
 											div.dropdown-menu.dropdown-menu-right(role="menu")
 												form.form-horizontal#form1(role="form" action="/" method="POST")
-													div.form-group
-														label(for="filter") Filter by
-														select.form-control(name="")
-															option(value="0" selected) All Snippets
-															option(value="1") Featured
-															option(value="2") Most Popular
-															option(value="3") Top Rated
-															option(value="4") Most Commented
 													div.form-group
 														label(for="contain") Author
 														input.form-control(type="text" name="author")
@@ -70,9 +62,52 @@ html
 															option(value="Non-Fiction") Non-Fiction
 															option(value="Drama") Drama
 															option(value="Fiction") Fiction
+													//- div.form-group
+													//- 	label(for="filter") Theme
+													//- 	select.form-control(name="theme")
+													//- 		option(value="0" selected) Choose a theme
+													//- 		option(value="Animals") Animals
+													//- 		option(value="Travel") Travel
+													//- 		option(value="War") War
+													//- 		option(value="Sports") Sports
+													//- 		option(value="Timetravel") Timetravel
+													div.form-group
+														label(for="filter") Series &nbsp;
+														input(type="checkbox" value="Yes" name="series")
 													div.form-group
 														label(for="contain") Max Page Numbers
-														input.form-control(type="number" name="pages" min="0" max="3000")
+														input.form-control(type="number" name="pagesMax" min="0" max="3000")
+													div.form-group
+														label(for="contain") Min Page Numbers
+														input.form-control(type="number" name="pagesMin" min="0" max="3000")
+													div.form-group
+														label(for="filter") Published in
+														br
+														div.inputGroup
+															label(for="filter") 2010- &nbsp;
+															input(type="checkbox" value="Yes" name="2010")
+														div.inputGroup
+															label(for="filter") &nbsp; 2000-2010 &nbsp;
+															input(type="checkbox" value="Yes" name="2000")
+														div.inputGroup
+															label(for="filter") &nbsp; 1950-2000 &nbsp;
+															input(type="checkbox" value="Yes" name="1950")
+														div.inputGroup
+															label(for="filter") &nbsp; 1900-1950 &nbsp;
+															input(type="checkbox" value="Yes" name="1900")
+														div.inputGroup
+															label(for="filter") &nbsp; 1800-1900 &nbsp;
+															input(type="checkbox" value="Yes" name="1800")
+													div.form-group
+														label(for="filter") Language
+														select.form-control(name="language")
+															option(value="0" selected) Choose a language
+															option(value="English") English
+															option(value="Dutch") Dutch
+															option(value="German") German
+															option(value="French") French
+															option(value="Chinese") Chinese
+															option(value="Spanish") Spanish
 													button.btn.btn-primary(type="submit")
 														span.glyphicon.glyphicon-search(aria-hidden="true")
 										button.btn.btn-primary(type="button")

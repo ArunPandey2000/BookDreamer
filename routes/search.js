@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
 	// let inputText = req.body.inputText
 	let author = req.body.author
 	let genre = req.body.genre
-	let pages = req.body.pages
+	let pagesMax = req.body.pagesMax
 
 	if(author != "") {
 		db.book.findAll({
@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
 			let newResult = []
 			for(let i = 0; i < book.length; i++) {
 				for(let j = 0; j < book[i].genre.length; j++) {
-					if(pages >= book[i].pages && genre == book[i].genre[j]) {
+					if(pagesMax >= book[i].pages && genre == book[i].genre[j]) {
 						result.push({
 							title: book[i].title,
 							author: book[i].author,
@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
 			let result = []
 			for(let i = 0; i < book.length; i++) {
 				for(let j = 0; j < book[i].genre.length; j++) {
-					if(pages >= book[i].pages && genre == book[i].genre[j]) {
+					if(pagesMax >= book[i].pages && genre == book[i].genre[j]) {
 						result.push({
 							title: book[i].title,
 							author: book[i].author,
