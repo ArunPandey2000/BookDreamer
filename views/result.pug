@@ -19,10 +19,51 @@ html
 						hr.visible-xs
 						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						br
-						each thing in book
-							h4 #{thing.author} - #{thing.title} - p.#{thing.pages}
-							h5 #{thing.genre[0]}, &nbsp; #{thing.genre[1]}, &nbsp; #{thing.genre[2]}
-							br
+
+						div.panel.panel-default#flip Sorted by Author (Firstname)
+							div.panel-body#panel(style="display: none")
+
+								- book.sort(function(a,b) {
+									- var textA = a.author.toUpperCase()
+									- var textB = b.author.toUpperCase()
+									- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
+								- })
+								
+								each thing in book
+									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+										h4 #{thing.author} - #{thing.title}
+									h5 #{thing.genre[0]}, &nbsp; #{thing.genre[1]}, &nbsp; #{thing.genre[2]}; &nbsp; p.#{thing.pages}
+									br
+
+						div.panel.panel-default#flip1 Sorted by Title
+							div.panel-body#panel1(style="display: none")
+
+								- book.sort(function(a,b) {
+									- var textA = a.title.toUpperCase()
+									- var textB = b.title.toUpperCase()
+									- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+								- })
+
+								each thing in book
+									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+										h4 #{thing.title} - #{thing.author}
+									h5 #{thing.genre[0]}, &nbsp; #{thing.genre[1]}, &nbsp; #{thing.genre[2]}; &nbsp; p.#{thing.pages}
+									br
+
+						div.panel.panel-default#flip2 Sorted by Number of Pages
+							div.panel-body#panel2(style="display: none")
+
+								- book.sort(function(a,b) {
+									- var textA = a.pages
+									- var textB = b.pages
+									- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
+								- })
+								
+								each thing in book
+									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+										h4 #{thing.author} - #{thing.title}
+									h5 #{thing.genre[0]}, &nbsp; #{thing.genre[1]}, &nbsp; #{thing.genre[2]}; &nbsp; p.#{thing.pages}
+									br
 		footer
 			div.container
 				div.row
@@ -31,4 +72,20 @@ html
 
 		script(src="jquery/jquery-3.1.1.min.js")
 		script(src="bootstrap/js/bootstrap.min.js")
-		
+		script.
+			$(document).ready(function(){
+				$("#flip").click(function(){
+					$("#panel").slideToggle("slow");
+				})
+			})
+			$(document).ready(function(){
+				$("#flip1").click(function(){
+						$("#panel1").slideToggle("slow");
+				})
+			})
+			$(document).ready(function(){
+				$("#flip2").click(function(){
+						$("#panel2").slideToggle("slow");
+				})
+			})
+

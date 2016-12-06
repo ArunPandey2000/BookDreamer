@@ -25,17 +25,20 @@ router.post('/', (req, res) => {
 			}
 		}).then(book => {
 			let result = []
+			let newResult = []
 			for(let i = 0; i < book.length; i++) {
-				if(pages != ""){
-					if(pages >= book[i].pages) {
+				for(let j = 0; j < book[i].genre.length; j++) {
+					if(pages >= book[i].pages && genre == book[i].genre[j]) {
 						result.push({
 							title: book[i].title,
 							author: book[i].author,
 							genre: book[i].genre,
-							pages: book[i].pages
+							pages: book[i].pages,
+							linkid: book[i].linkid
 						})
 					}
 				}
+				
 			}
 			return result
 		}).then(book => {
@@ -43,7 +46,7 @@ router.post('/', (req, res) => {
 				res.render('result', {book: book})
 			}
 			else {
-				res.send("No Pages!")
+				res.send("No Pages! No genre!")
 			}
 		})
 	}
@@ -51,22 +54,29 @@ router.post('/', (req, res) => {
 		db.book.findAll().then(book => {
 			let result = []
 			for(let i = 0; i < book.length; i++) {
-				if(pages >= book[i].pages) {
-					result.push({
-						title: book[i].title,
-						author: book[i].author,
-						genre: book[i].genre,
-						pages: book[i].pages
-					}) //Working on this part! 5-12
+				for(let j = 0; j < book[i].genre.length; j++) {
+					if(pages >= book[i].pages && genre == book[i].genre[j]) {
+						result.push({
+							title: book[i].title,
+							author: book[i].author,
+							genre: book[i].genre,
+							pages: book[i].pages,
+							linkid: book[i].linkid
+						})
+					}
 				}
+				
 			}
 			return result
 		}).then(book => {
-			res.render('result', {book: book})
+			if(book != ""){
+				res.render('result', {book: book})
+			}
+			else {
+				res.send("No Pages! No genre!")
+			}
 		})
 	}
-	
-	// res.send('Jeeh post is working!')
 })
 
 module.exports = router
