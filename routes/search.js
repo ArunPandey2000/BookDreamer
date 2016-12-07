@@ -78,20 +78,12 @@ router.post('/', (req, res) => {
 
 	console.log(filter)
 
-	// db.book.findAll({
-	// 	where: {
-	// 		filter
-	// 	}
-	// }).then(book => {
-	// 	console.log(book)
-	// })
-
 	db.book.findAll({
 		where: {
-			// author: filter.author,
-			// genre: {
-			// 	$contains: [filter.genre]
-			// },
+			author: filter.author,
+			genre: {
+				$contains: filter.genre
+			},
 			pages: {
 				$between: [filter.pagesMin, filter.pagesMax]
 			},
@@ -101,7 +93,7 @@ router.post('/', (req, res) => {
 			}
 		}
 	}).then(books=>{
-		res.send(books)
+		res.render('result', {book: books})
 	})
 
 	//Author filled in
