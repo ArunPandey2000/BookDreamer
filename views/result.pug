@@ -32,7 +32,10 @@ html
 								each thing in book
 									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
 										h4 #{thing.author} - #{thing.title}
-									h5 #{thing.genre[0]}, &nbsp; #{thing.genre[1]}, &nbsp; #{thing.genre[2]}; &nbsp; p.#{thing.pages}
+									h5
+										each gen in thing.genre
+											span #{gen}, &nbsp;
+										span p.#{thing.pages}
 									br
 
 						div.panel.panel-default#flip1 Sorted by Title
@@ -46,8 +49,11 @@ html
 
 								each thing in book
 									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-										h4 #{thing.title} - #{thing.author}
-									h5 #{thing.genre[0]}, &nbsp; #{thing.genre[1]}, &nbsp; #{thing.genre[2]}; &nbsp; p.#{thing.pages}
+										h4 #{thing.author} - #{thing.title}
+									h5
+										each gen in thing.genre
+											span #{gen}, &nbsp;
+										span p.#{thing.pages}
 									br
 
 						div.panel.panel-default#flip2 Sorted by Number of Pages
@@ -62,9 +68,11 @@ html
 								each thing in book
 									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
 										h4 #{thing.author} - #{thing.title}
-									-for(var i = 0; i < thing.genre.length; i++)
-										h5 #{thing.genre[i]}
-									h5 #{thing.pages}
+									h5
+										each gen in thing.genre
+											span #{gen}, &nbsp;
+										span p.#{thing.pages}
+									br
 
 		footer
 			div.container
