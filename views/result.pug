@@ -20,59 +20,83 @@ html
 						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 						br
 
-						div.panel.panel-default#flip Sorted by Author (Firstname)
-							div.panel-body#panel(style="display: none")
+						div.filterButton(style="text-align: center")
+							button#flip Sorted by Author
+							button#flip1 Sorted by Title
+							button#flip2 Sorted by Number of Pages
+							button#flip3 Sorted by Rating
+						//- div.panel.panel-default
+						div.panel.panel-default.panel-body#panel(style="display: none")
 
-								- book.sort(function(a,b) {
-									- var textA = a.author.toUpperCase()
-									- var textB = b.author.toUpperCase()
-									- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
-								- })
-								
-								each thing in book
-									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-										h4 #{thing.author} - #{thing.title}
-									h5
-										each gen in thing.genre
-											span #{gen}, &nbsp;
-										span p.#{thing.pages}
-									br
+							- book.sort(function(a,b) {
+								- var textA = a.author.toUpperCase()
+								- var textB = b.author.toUpperCase()
+								- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
+							- })
+							
+							each thing in book
+								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+									h4 #{thing.author} - #{thing.title}
+								h5
+									each gen in thing.genre
+										span #{gen}, &nbsp;
+									span p.#{thing.pages}
+								br
 
-						div.panel.panel-default#flip1 Sorted by Title
-							div.panel-body#panel1(style="display: none")
+					
+						div.panel.panel-default.panel-body#panel1(style="display: none")
 
-								- book.sort(function(a,b) {
-									- var textA = a.title.toUpperCase()
-									- var textB = b.title.toUpperCase()
-									- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-								- })
+							- book.sort(function(a,b) {
+								- var textA = a.title.toUpperCase()
+								- var textB = b.title.toUpperCase()
+								- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+							- })
 
-								each thing in book
-									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-										h4 #{thing.author} - #{thing.title}
-									h5
-										each gen in thing.genre
-											span #{gen}, &nbsp;
-										span p.#{thing.pages}
-									br
+							each thing in book
+								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+									h4 #{thing.author} - #{thing.title}
+								h5
+									each gen in thing.genre
+										span #{gen}, &nbsp;
+									span p.#{thing.pages}
+								br
+							
+							
+								//- div.panel.panel-default#flip1 Sorted by Title
+								//- 	div.panel-body#panel1(style="display: none")
 
-						div.panel.panel-default#flip2 Sorted by Number of Pages
-							div.panel-body#panel2(style="display: none")
+								//- 		- book.sort(function(a,b) {
+								//- 			- var textA = a.title.toUpperCase()
+								//- 			- var textB = b.title.toUpperCase()
+								//- 			- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+								//- 		- })
 
-								- book.sort(function(a,b) {
-									- var textA = a.pages
-									- var textB = b.pages
-									- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
-								- })
-								
-								each thing in book
-									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-										h4 #{thing.author} - #{thing.title}
-									h5
-										each gen in thing.genre
-											span #{gen}, &nbsp;
-										span p.#{thing.pages}
-									br
+								//- 		each thing in book
+								//- 			a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+								//- 				h4 #{thing.author} - #{thing.title}
+								//- 			h5
+								//- 				each gen in thing.genre
+								//- 					span #{gen}, &nbsp;
+								//- 				span p.#{thing.pages}
+								//- 			br
+
+								//- div.panel.panel-default#flip2 Sorted by Number of Pages
+						div.panel.panel-default.panel-body#panel2(style="display: none")
+
+							- book.sort(function(a,b) {
+								- var textA = a.pages
+								- var textB = b.pages
+								- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
+							- })
+							
+							each thing in book
+								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+									h4 #{thing.author} - #{thing.title}
+								h5
+									each gen in thing.genre
+										span #{gen}, &nbsp;
+									span p.#{thing.pages}
+								br
 
 		footer
 			div.container
@@ -85,17 +109,23 @@ html
 		script.
 			$(document).ready(function(){
 				$("#flip").click(function(){
+					$("#panel1").slideUp("slow")
+					$("#panel2").slideUp("slow")
 					$("#panel").slideToggle("slow");
 				})
 			})
 			$(document).ready(function(){
 				$("#flip1").click(function(){
-						$("#panel1").slideToggle("slow");
+					$("#panel").slideUp("slow")
+					$("#panel2").slideUp("slow")
+					$("#panel1").slideToggle("slow");
 				})
 			})
 			$(document).ready(function(){
 				$("#flip2").click(function(){
-						$("#panel2").slideToggle("slow");
+					$("#panel").slideUp("slow")
+					$("#panel1").slideUp("slow")
+					$("#panel2").slideToggle("slow");
 				})
 			})
 
