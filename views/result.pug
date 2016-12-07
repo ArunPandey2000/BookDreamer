@@ -62,9 +62,10 @@ html
 								each thing in book
 									a(href="https://www.goodreads.com/book/show/" + thing.linkid)
 										h4 #{thing.author} - #{thing.title}
-									- console.log(thing.genre)
-									h5 #{thing.genre}, &nbsp; p.#{thing.pages} <!-- How to add spaces between the array?-->
-									br
+									-for(var i = 0; i < thing.genre.length; i++)
+										h5 #{thing.genre[i]}
+									h5 #{thing.pages}
+
 		footer
 			div.container
 				div.row
