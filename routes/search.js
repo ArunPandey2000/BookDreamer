@@ -55,8 +55,7 @@ router.post('/', (req, res) => {
 	}
 
 	//Check if filter options are filled in or not
-	if (req.body.inputText) filter.title = {$iLike: req.body.inputText}
-	if (req.body.inputText) filter.summary = {$iLike: req.body.inputText}
+	
 	if (req.body.language) filter.language = req.body.language
 	if (req.body.author) filter.author = req.body.author
 	if (req.body.genre) filter.genre = {$contains: [req.body.genre]}
@@ -67,9 +66,27 @@ router.post('/', (req, res) => {
 	if (req.body.rating) filter.rating = {$between: [req.body.rating, 5]}
 
 	db.book.findAll({
-		where: filter			
+		where: filter	
 	}).then(books=>{
-		res.render('result', {book: books})
+		let result = []
+		for(let i = 0; i < books.length; i++){
+			if(books[i].title.includes(req.body.inputText) || books[i].summary.includes(req.body.inputText)) {
+				result.push({
+					id: books[i].id,
+					title: books[i].title,
+					author: books[i].author,
+					genre: books[i].genre,
+					pages: books[i].pages,
+					linkid: books[i].linkid,
+					series: books[i].series,
+					published: books[i].published,
+					language: books[i].language,
+					rating: books[i].rating,
+					summary: books[i].summary
+				})
+			}
+		}
+		res.render('result', {book: result})
 	})
 })
 
