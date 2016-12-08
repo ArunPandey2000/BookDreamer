@@ -55,9 +55,9 @@ router.post('/', (req, res) => {
 	}
 
 	//Check if filter options are filled in or not
-	
+
 	if (req.body.language) filter.language = req.body.language
-	if (req.body.author) filter.author = req.body.author
+	if (req.body.author) filter.author = {$iLike: '%' + req.body.author + '%'}
 	if (req.body.genre) filter.genre = {$contains: [req.body.genre]}
 	if (req.body.pagesMax && req.body.pagesMin) filter.pages = {$between: [req.body.pagesMin, req.body.pagesMax]}
 	if (req.body.pagesMax && req.body.pagesMin == "") filter.pages = {$between: [0, req.body.pagesMax]}
@@ -70,7 +70,7 @@ router.post('/', (req, res) => {
 	}).then(books=>{
 		let result = []
 		for(let i = 0; i < books.length; i++){
-			if(books[i].title.includes(req.body.inputText) || books[i].summary.includes(req.body.inputText)) {
+			if(books[i].title.includes(req.body.inputText) || books[i].summary.includes(req.body.inputText.toLowerCase())) {
 				result.push({
 					id: books[i].id,
 					title: books[i].title,
@@ -86,7 +86,12 @@ router.post('/', (req, res) => {
 				})
 			}
 		}
-		res.render('result', {book: result})
+		if(result.length != 0) {
+			res.render('result', {book: result})
+		}
+		else {
+			res.render('result', {book: books})
+		}
 	})
 })
 

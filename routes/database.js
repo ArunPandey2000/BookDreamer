@@ -43,7 +43,7 @@ db.conn.sync({force: true}).then( database => {
 		published: 1997,
 		language: "English",
 		rating: 4.43,
-		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		summary: "Lorem harry ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Hitchhiker's Guide to the Galaxy",
@@ -55,7 +55,7 @@ db.conn.sync({force: true}).then( database => {
 		published: 1995,
 		language: "English",
 		rating: 4.2,
-		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+		summary: "Lorem harry ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Mansfield Park",
