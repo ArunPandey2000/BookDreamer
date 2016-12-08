@@ -57,7 +57,7 @@ html
 
 							each thing in book
 								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-									h4 #{thing.author} - #{thing.title}
+									h4 #{thing.title} - #{thing.author}
 										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 								h5
 									each gen in thing.genre

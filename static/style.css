@@ -1,4 +1,4 @@
-h1, p {
+h1#homeheading, p.index {
     text-shadow: 1px 1px black;
 }
 
@@ -8,9 +8,6 @@ label {
 
 /*Search bar */
 
-/*body {
-    padding-top: 50px;
-}*/
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
     padding: 6px 20px;

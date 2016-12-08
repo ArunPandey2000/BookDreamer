@@ -23,7 +23,8 @@ db.book = db.conn.define('book', {
 	series: sequelize.BOOLEAN,
 	published: sequelize.INTEGER,
 	language: sequelize.STRING,
-	rating: sequelize.FLOAT
+	rating: sequelize.FLOAT,
+	summary: sequelize.TEXT
 })
 
 
@@ -41,7 +42,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 1997,
 		language: "English",
-		rating: 4.43
+		rating: 4.43,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Hitchhiker's Guide to the Galaxy",
@@ -52,7 +54,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 1995,
 		language: "English",
-		rating: 4.2
+		rating: 4.2,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Mansfield Park",
@@ -63,7 +66,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2003,
 		language: "English",
-		rating: 3.82
+		rating: 3.82,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Magician's Guild(The Black Magician Trilogy #1)",
@@ -74,7 +78,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2004,
 		language: "English",
-		rating: 3.96
+		rating: 3.96,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Murder at the Vicarage(Miss Marple #1)",
@@ -85,7 +90,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2006,
 		language: "English",
-		rating: 4.02
+		rating: 4.02,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "A Tale of Two Cities",
@@ -96,7 +102,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2003,
 		language: "English",
-		rating: 3.80
+		rating: 3.80,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Gone Girl",
@@ -107,7 +114,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2014,
 		language: "English",
-		rating: 4.02
+		rating: 4.02,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Outlander(Outlander #1)",
@@ -118,7 +126,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2005,
 		language: "English",
-		rating: 4.20
+		rating: 4.20,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Silence of the Lambs(Hannibal Lecter #2)",
@@ -129,7 +138,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2002,
 		language: "English",
-		rating: 4.12
+		rating: 4.12,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Kite Runner",
@@ -140,7 +150,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2004,
 		language: "English",
-		rating: 4.24
+		rating: 4.24,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Les Miserables",
@@ -151,7 +162,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 1987,
 		language: "English",
-		rating: 4.13
+		rating: 4.13,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "It",
@@ -162,7 +174,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 1987,
 		language: "English",
-		rating: 4.16
+		rating: 4.16,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Air Awakens(Air Awakens #1)",
@@ -173,7 +186,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2015,
 		language: "English",
-		rating: 4.02
+		rating: 4.02,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Prince of Thorns(The Broken Empire #1)",
@@ -184,7 +198,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2011,
 		language: "English",
-		rating: 3.87
+		rating: 3.87,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "To Kill a Mockingbird(To Kill a Mockingbird #1)",
@@ -195,7 +210,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2006,
 		language: "English",
-		rating: 4.25
+		rating: 4.25,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "I Am Number Four(Lorien Legacies #1)",
@@ -206,7 +222,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2010,
 		language: "English",
-		rating: 3.94
+		rating: 3.94,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Life of Pi",
@@ -217,7 +234,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2006,
 		language: "English",
-		rating: 3.88
+		rating: 3.88,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones(A Song of Ice and Fire)",
@@ -228,7 +246,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2014,
 		language: "English",
-		rating: 4.23
+		rating: 4.23,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Cinder(The Lunar Chronicles #1)",
@@ -239,7 +258,8 @@ db.conn.sync({force: true}).then( database => {
 		series: true,
 		published: 2012,
 		language: "English",
-		rating: 4.15
+		rating: 4.15,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Gone with the Wind",
@@ -250,7 +270,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 1999,
 		language: "English",
-		rating: 4.27
+		rating: 4.27,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Night Circus",
@@ -261,7 +282,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2011,
 		language: "English",
-		rating: 4.03
+		rating: 4.03,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "Summer, Fireworks, and My Corpse",
@@ -272,7 +294,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2010,
 		language: "English",
-		rating: 3.99
+		rating: 3.99,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Casual Vacancy",
@@ -283,7 +306,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 2012,
 		language: "English",
-		rating: 3.27
+		rating: 3.27,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 	db.book.create({
 		title: "The Dream of the Red Chamber",
@@ -294,7 +318,8 @@ db.conn.sync({force: true}).then( database => {
 		series: false,
 		published: 1958,
 		language: "Chinese",
-		rating: 4.11
+		rating: 4.11,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
 })
 

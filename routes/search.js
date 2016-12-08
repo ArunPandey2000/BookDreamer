@@ -55,7 +55,8 @@ router.post('/', (req, res) => {
 	}
 
 	//Check if filter options are filled in or not
-	// if (req.body.inputText) filter.title = req.body.inputText
+	if (req.body.inputText) filter.title = {$iLike: req.body.inputText}
+	if (req.body.inputText) filter.summary = {$iLike: req.body.inputText}
 	if (req.body.language) filter.language = req.body.language
 	if (req.body.author) filter.author = req.body.author
 	if (req.body.genre) filter.genre = {$contains: [req.body.genre]}
