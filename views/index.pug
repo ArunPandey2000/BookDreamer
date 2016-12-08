@@ -62,15 +62,6 @@ html
 															option(value="Non-Fiction") Non-Fiction
 															option(value="Drama") Drama
 															option(value="Fiction") Fiction
-													//- div.form-group
-													//- 	label(for="filter") Theme
-													//- 	select.form-control(name="theme")
-													//- 		option(value="0" selected) Choose a theme
-													//- 		option(value="Animals") Animals
-													//- 		option(value="Travel") Travel
-													//- 		option(value="War") War
-													//- 		option(value="Sports") Sports
-													//- 		option(value="Timetravel") Timetravel
 													div.form-group
 														label(for="filter") Series &nbsp;
 														input(type="checkbox" value="true" name="series")
@@ -108,12 +99,29 @@ html
 															option(value="French") French
 															option(value="Chinese") Chinese
 															option(value="Spanish") Spanish
-													button.btn.btn-primary(type="submit")
-														span.glyphicon.glyphicon-search(aria-hidden="true")
-										button.btn.btn-primary(type="button")
+													div.form-group
+														label(for="filter") Min Rating
+														br
+														div.inputGroup
+															label(for="filter") 5 Stars &nbsp;
+															input(type="radio" name="rating" value=4.75)
+														div.inputGroup
+															label(for="filter") 4 Stars &nbsp;
+															input(type="radio" name="rating" value=3.75)
+														div.inputGroup
+															label(for="filter") 3 Stars &nbsp;
+															input(type="radio" name="rating" value=2.75)
+														div.inputGroup
+															label(for="filter") 2 Stars &nbsp;
+															input(type="radio" name="rating" value=1.75)
+														div.inputGroup
+															label(for="filter") 1 Stars &nbsp;
+															input(type="radio" name="rating" value=0.75)
+
+										button.btn.btn-primary(type="submit" form="form1")
 											span.glyphicon.glyphicon-search(aria-hidden="true")
 					br
-					a.btn.btn-primary.btn-xl.page-scroll(href="#about") Search
+					a.btn.btn-primary.btn-xl.page-scroll(type="submit" form="form1") Search
 
 		script(src="jquery/jquery-3.1.1.min.js")
 		script(src="bootstrap/js/bootstrap.min.js")

@@ -32,6 +32,7 @@ router.post('/', (req, res) => {
 		publish.push(1800)
 	}
 
+
 	//Change value genre and language to undefined when not specified
 	if(req.body.genre == 0) {
 		req.body.genre = undefined
@@ -61,7 +62,8 @@ router.post('/', (req, res) => {
 	if (req.body.pagesMax && req.body.pagesMin) filter.pages = {$between: [req.body.pagesMin, req.body.pagesMax]}
 	if (req.body.pagesMax && req.body.pagesMin == "") filter.pages = {$between: [0, req.body.pagesMax]}
 	if (req.body.series) filter.series = req.body.series
-	if (publish) filter.published = {$between: [publish.slice(-1)[0], new Date().getFullYear()]}
+	if (publish.length != 0) filter.published = {$between: [publish.slice(-1)[0], new Date().getFullYear()]}
+	if (req.body.rating) filter.rating = {$between: [req.body.rating, 5]}
 
 	db.book.findAll({
 		where: filter			

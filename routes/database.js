@@ -22,7 +22,8 @@ db.book = db.conn.define('book', {
 	linkid: sequelize.INTEGER,
 	series: sequelize.BOOLEAN,
 	published: sequelize.INTEGER,
-	language: sequelize.STRING
+	language: sequelize.STRING,
+	rating: sequelize.FLOAT
 })
 
 
@@ -39,7 +40,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 3,
 		series: true,
 		published: 1997,
-		language: "English"
+		language: "English",
+		rating: 4.43
 	})
 	db.book.create({
 		title: "The Hitchhiker's Guide to the Galaxy",
@@ -49,7 +51,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 11,
 		series: true,
 		published: 1995,
-		language: "English"
+		language: "English",
+		rating: 4.2
 	})
 	db.book.create({
 		title: "Mansfield Park",
@@ -59,7 +62,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 45032,
 		series: false,
 		published: 2003,
-		language: "English"
+		language: "English",
+		rating: 3.82
 	})
 	db.book.create({
 		title: "The Magician's Guild(The Black Magician Trilogy #1)",
@@ -69,7 +73,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 28249,
 		series: true,
 		published: 2004,
-		language: "English"
+		language: "English",
+		rating: 3.96
 	})
 	db.book.create({
 		title: "Murder at the Vicarage(Miss Marple #1)",
@@ -79,7 +84,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 16331,
 		series: true,
 		published: 2006,
-		language: "English"
+		language: "English",
+		rating: 4.02
 	})
 	db.book.create({
 		title: "A Tale of Two Cities",
@@ -89,7 +95,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 1953,
 		series: false,
 		published: 2003,
-		language: "English"
+		language: "English",
+		rating: 3.80
 	})
 	db.book.create({
 		title: "Gone Girl",
@@ -99,7 +106,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 19288043,
 		series: false,
 		published: 2014,
-		language: "English"
+		language: "English",
+		rating: 4.02
 	})
 	db.book.create({
 		title: "Outlander(Outlander #1)",
@@ -109,7 +117,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 10964,
 		series: true,
 		published: 2005,
-		language: "English"
+		language: "English",
+		rating: 4.20
 	})
 	db.book.create({
 		title: "The Silence of the Lambs(Hannibal Lecter #2)",
@@ -119,7 +128,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 23807,
 		series: true,
 		published: 2002,
-		language: "English"
+		language: "English",
+		rating: 4.12
 	})
 	db.book.create({
 		title: "The Kite Runner",
@@ -129,7 +139,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 77203,
 		series: false,
 		published: 2004,
-		language: "English"
+		language: "English",
+		rating: 4.24
 	})
 	db.book.create({
 		title: "Les Miserables",
@@ -139,7 +150,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 24280,
 		series: false,
 		published: 1987,
-		language: "English"
+		language: "English",
+		rating: 4.13
 	})
 	db.book.create({
 		title: "It",
@@ -149,7 +161,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 830502,
 		series: false,
 		published: 1987,
-		language: "English"
+		language: "English",
+		rating: 4.16
 	})
 	db.book.create({
 		title: "Air Awakens(Air Awakens #1)",
@@ -159,7 +172,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 23127048,
 		series: true,
 		published: 2015,
-		language: "English"
+		language: "English",
+		rating: 4.02
 	})
 	db.book.create({
 		title: "Prince of Thorns(The Broken Empire #1)",
@@ -169,7 +183,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 9579634,
 		series: true,
 		published: 2011,
-		language: "English"
+		language: "English",
+		rating: 3.87
 	})
 	db.book.create({
 		title: "To Kill a Mockingbird(To Kill a Mockingbird #1)",
@@ -179,7 +194,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 2657,
 		series: true,
 		published: 2006,
-		language: "English"
+		language: "English",
+		rating: 4.25
 	})
 	db.book.create({
 		title: "I Am Number Four(Lorien Legacies #1)",
@@ -189,7 +205,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 7747374,
 		series: true,
 		published: 2010,
-		language: "English"
+		language: "English",
+		rating: 3.94
 	})
 	db.book.create({
 		title: "Life of Pi",
@@ -199,7 +216,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 4214,
 		series: false,
 		published: 2006,
-		language: "English"
+		language: "English",
+		rating: 3.88
 	})
 	db.book.create({
 		title: "The World of Ice & Fire: The Untold History of Westeros and the Game of Thrones(A Song of Ice and Fire)",
@@ -209,7 +227,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 17345242,
 		series: true,
 		published: 2014,
-		language: "English"
+		language: "English",
+		rating: 4.23
 	})
 	db.book.create({
 		title: "Cinder(The Lunar Chronicles #1)",
@@ -219,7 +238,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 11235712,
 		series: true,
 		published: 2012,
-		language: "English"
+		language: "English",
+		rating: 4.15
 	})
 	db.book.create({
 		title: "Gone with the Wind",
@@ -229,7 +249,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 18405,
 		series: false,
 		published: 1999,
-		language: "English"
+		language: "English",
+		rating: 4.27
 	})
 	db.book.create({
 		title: "The Night Circus",
@@ -239,7 +260,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 9361589,
 		series: false,
 		published: 2011,
-		language: "English"
+		language: "English",
+		rating: 4.03
 	})
 	db.book.create({
 		title: "Summer, Fireworks, and My Corpse",
@@ -249,7 +271,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 7326853,
 		series: false,
 		published: 2010,
-		language: "English"
+		language: "English",
+		rating: 3.99
 	})
 	db.book.create({
 		title: "The Casual Vacancy",
@@ -259,7 +282,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 13497818,
 		series: false,
 		published: 2012,
-		language: "English"
+		language: "English",
+		rating: 3.27
 	})
 	db.book.create({
 		title: "The Dream of the Red Chamber",
@@ -269,7 +293,8 @@ db.conn.sync({force: true}).then( database => {
 		linkid: 535739,
 		series: false,
 		published: 1958,
-		language: "Chinese"
+		language: "Chinese",
+		rating: 4.11
 	})
 })
 

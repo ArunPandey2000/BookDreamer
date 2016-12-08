@@ -6,7 +6,7 @@ html
 		link(href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css")
 		link(href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css")
 		link(href="business-casual.css" rel="stylesheet" type="text/css")
-		//- link(href="style.css" rel="stylesheet" type="text/css")
+		link(href="style.css" rel="stylesheet" type="text/css")
 	body
 		div.container
 			div.row
@@ -25,7 +25,8 @@ html
 							button#flip1 Sorted by Title
 							button#flip2 Sorted by Number of Pages
 							button#flip3 Sorted by Rating
-						//- div.panel.panel-default
+
+
 						div.panel.panel-default.panel-body#panel(style="display: none")
 
 							- book.sort(function(a,b) {
@@ -37,10 +38,12 @@ html
 							each thing in book
 								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
 									h4 #{thing.author} - #{thing.title}
+										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 								h5
 									each gen in thing.genre
 										span #{gen}, &nbsp;
 									span p.#{thing.pages}
+									h5
 								br
 
 					
@@ -55,32 +58,14 @@ html
 							each thing in book
 								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
 									h4 #{thing.author} - #{thing.title}
+										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 								h5
 									each gen in thing.genre
 										span #{gen}, &nbsp;
 									span p.#{thing.pages}
+									h5
 								br
 							
-							
-								//- div.panel.panel-default#flip1 Sorted by Title
-								//- 	div.panel-body#panel1(style="display: none")
-
-								//- 		- book.sort(function(a,b) {
-								//- 			- var textA = a.title.toUpperCase()
-								//- 			- var textB = b.title.toUpperCase()
-								//- 			- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-								//- 		- })
-
-								//- 		each thing in book
-								//- 			a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-								//- 				h4 #{thing.author} - #{thing.title}
-								//- 			h5
-								//- 				each gen in thing.genre
-								//- 					span #{gen}, &nbsp;
-								//- 				span p.#{thing.pages}
-								//- 			br
-
-								//- div.panel.panel-default#flip2 Sorted by Number of Pages
 						div.panel.panel-default.panel-body#panel2(style="display: none")
 
 							- book.sort(function(a,b) {
@@ -92,17 +77,38 @@ html
 							each thing in book
 								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
 									h4 #{thing.author} - #{thing.title}
+										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
+								h5
+									each gen in thing.genre
+										span #{gen}, &nbsp;
+									span p.#{thing.pages}
+									h5
+								br
+
+						div.panel.panel-default.panel-body#panel3(style="display: none")
+
+							- book.sort(function(a,b) {
+								- var textA = a.rating
+								- var textB = b.rating
+								- return (textA > textB) ? -1 : (textA < textB) ? 1 : 0; 
+							- })
+							
+							each thing in book
+								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+									h4 #{thing.author} - #{thing.title}
+										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 								h5
 									each gen in thing.genre
 										span #{gen}, &nbsp;
 									span p.#{thing.pages}
 								br
 
+
 		footer
 			div.container
 				div.row
 					div.col-lg-12.text-center
-						p Copyright &copy; Laura Kramer, Find Your Read 2016
+						p Copyright &copy; Laura Kramer, Find Your Next Read 2016
 
 		script(src="jquery/jquery-3.1.1.min.js")
 		script(src="bootstrap/js/bootstrap.min.js")
@@ -111,6 +117,7 @@ html
 				$("#flip").click(function(){
 					$("#panel1").slideUp("slow")
 					$("#panel2").slideUp("slow")
+					$("#panel3").slideUp("slow")
 					$("#panel").slideToggle("slow");
 				})
 			})
@@ -118,6 +125,7 @@ html
 				$("#flip1").click(function(){
 					$("#panel").slideUp("slow")
 					$("#panel2").slideUp("slow")
+					$("#panel3").slideUp("slow")
 					$("#panel1").slideToggle("slow");
 				})
 			})
@@ -125,7 +133,16 @@ html
 				$("#flip2").click(function(){
 					$("#panel").slideUp("slow")
 					$("#panel1").slideUp("slow")
+					$("#panel3").slideUp("slow")
 					$("#panel2").slideToggle("slow");
+				})
+			})
+			$(document).ready(function(){
+				$("#flip3").click(function(){
+					$("#panel").slideUp("slow")
+					$("#panel1").slideUp("slow")
+					$("#panel2").slideUp("slow")
+					$("#panel3").slideToggle("slow")
 				})
 			})
 
