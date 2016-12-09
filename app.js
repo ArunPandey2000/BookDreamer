@@ -31,6 +31,6 @@ app.use( searchRoute )
 app.use( resultRoute )
 
 //listen port 8000
-app.listen(8000, () => {
+app.listen(3000, () => {
 	console.log('Server is running')
 })

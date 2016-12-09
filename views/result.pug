@@ -35,8 +35,9 @@ html
 								- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
 							- })
 							
-							each thing in book
-								ul#datalist
+							
+							ul#datalist
+								each thing in book
 									li
 										a(href="https://www.goodreads.com/book/show/" + thing.linkid)
 											h4 #{thing.author} - #{thing.title}
@@ -47,6 +48,7 @@ html
 											span p.#{thing.pages}
 											h5
 										br
+							span#moreResults See more
 
 					
 						div.panel.panel-default.panel-body#panel1(style="display: none")
@@ -57,16 +59,19 @@ html
 								- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
 							- })
 
-							each thing in book
-								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-									h4 #{thing.title} - #{thing.author}
-										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
-								h5
-									each gen in thing.genre
-										span #{gen}, &nbsp;
-									span p.#{thing.pages}
-									h5
-								br
+							ul#datalist1
+								each thing in book
+									li
+										a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+											h4 #{thing.title} - #{thing.author}
+												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
+										h5
+											each gen in thing.genre
+												span #{gen}, &nbsp;
+											span p.#{thing.pages}
+											h5
+										br
+							span#moreResults1 See more
 							
 						div.panel.panel-default.panel-body#panel2(style="display: none")
 
@@ -76,16 +81,19 @@ html
 								- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
 							- })
 							
-							each thing in book
-								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-									h4 #{thing.author} - #{thing.title}
-										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
-								h5
-									each gen in thing.genre
-										span #{gen}, &nbsp;
-									span p.#{thing.pages}
-									h5
-								br
+							ul#datalist2
+								each thing in book
+									li
+										a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+											h4 #{thing.author} - #{thing.title}
+												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
+										h5
+											each gen in thing.genre
+												span #{gen}, &nbsp;
+											span p.#{thing.pages}
+											h5
+										br
+							span#moreResults2 See more
 
 						div.panel.panel-default.panel-body#panel3(style="display: none")
 
@@ -95,15 +103,18 @@ html
 								- return (textA > textB) ? -1 : (textA < textB) ? 1 : 0; 
 							- })
 							
-							each thing in book
-								a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-									h4 #{thing.author} - #{thing.title}
-										span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
-								h5
-									each gen in thing.genre
-										span #{gen}, &nbsp;
-									span p.#{thing.pages}
-								br
+							ul#datalist3
+								each thing in book
+									li
+										a(href="https://www.goodreads.com/book/show/" + thing.linkid)
+											h4 #{thing.author} - #{thing.title}
+												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
+										h5
+											each gen in thing.genre
+												span #{gen}, &nbsp;
+											span p.#{thing.pages}
+										br
+							span#moreResults3 See more
 
 
 		footer
@@ -114,45 +125,5 @@ html
 
 		script(src="jquery/jquery-3.1.1.min.js")
 		script(src="bootstrap/js/bootstrap.min.js")
-		script.
-			$(document).ready(function(){
-				$("#flip").click(function(){
-					$("#panel1").slideUp("slow")
-					$("#panel2").slideUp("slow")
-					$("#panel3").slideUp("slow")
-					$("#panel").slideToggle("slow");
-				})
-			})
-			$(document).ready(function(){
-				$("#flip1").click(function(){
-					$("#panel").slideUp("slow")
-					$("#panel2").slideUp("slow")
-					$("#panel3").slideUp("slow")
-					$("#panel1").slideToggle("slow");
-				})
-			})
-			$(document).ready(function(){
-				$("#flip2").click(function(){
-					$("#panel").slideUp("slow")
-					$("#panel1").slideUp("slow")
-					$("#panel3").slideUp("slow")
-					$("#panel2").slideToggle("slow");
-				})
-			})
-			$(document).ready(function(){
-				$("#flip3").click(function(){
-					$("#panel").slideUp("slow")
-					$("#panel1").slideUp("slow")
-					$("#panel2").slideUp("slow")
-					$("#panel3").slideToggle("slow")
-				})
-			})
-			$(function () {
-			    $('span').click(function () {
-			        $('#datalist li:hidden').slice(0, 5).show();
-			        if ($('#datalist li').length == $('#datalist li:visible').length) {
-			            $('span ').hide();
-			        }
-			    });
-			});
-
+		script(src="js/resultpage.js")
+			

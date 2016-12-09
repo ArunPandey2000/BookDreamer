@@ -62,8 +62,11 @@ label {
   .dropdown-menu {
     width: 280px; } }
 
-/*Ratings*/
-.rating-static {
+/*Results and ratings*/
+ul li:nth-child(n+6) {
+  display: none; }
+
+ul .rating-static {
   width: 60px;
   height: 16px;
   zoom: 1.5;
@@ -71,35 +74,39 @@ label {
   background: url("../img/star-rating.png") 0 0 no-repeat;
   float: right; }
 
-.rating-50 {
+ul .rating-50 {
   background-position: 0 0; }
 
-.rating-40 {
+ul .rating-40 {
   background-position: -12px 0; }
 
-.rating-30 {
+ul .rating-30 {
   background-position: -24px 0; }
 
-.rating-20 {
+ul .rating-20 {
   background-position: -36px 0; }
 
-.rating-10 {
+ul .rating-10 {
   background-position: -48px 0; }
 
-.rating-0 {
+ul .rating-0 {
   background-position: -60px 0; }
 
-.rating-5 {
+ul .rating-5 {
   background-position: -48px -16px; }
 
-.rating-15 {
+ul .rating-15 {
   background-position: -36px -16px; }
 
-.rating-25 {
+ul .rating-25 {
   background-position: -24px -16px; }
 
-.rating-35 {
+ul .rating-35 {
   background-position: -12px -16px; }
 
-.rating-45 {
+ul .rating-45 {
   background-position: 0 -16px; }
+
+span#moreResults, #moreResults1, #moreResults2, #moreResults3 {
+  cursor: pointer;
+  font-size: 24px; }

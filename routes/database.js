@@ -321,6 +321,18 @@ db.conn.sync({force: true}).then( database => {
 		rating: 4.11,
 		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 	})
+	db.book.create({
+		title: "Angel's Awakening(Awakening #1)",
+		author: "Akaria Gale",
+		genre: ["Paranormal", "Urban Fantasy", "Angels"],
+		pages: 182,
+		linkid: 23460246,
+		series: true,
+		published: 2014,
+		language: "English",
+		rating: 3.58,
+		summary: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+	})
 })
 
 
