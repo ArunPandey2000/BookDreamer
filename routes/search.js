@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 	let publish = []
+	let inputText = req.body.inputText.toUpperCase()
 
 	//Put publishing years into an array
 	if(req.body.twoTen == "true") {
@@ -70,7 +71,7 @@ router.post('/', (req, res) => {
 	}).then(books=>{
 		let result = []
 		for(let i = 0; i < books.length; i++){
-			if(books[i].title.includes(req.body.inputText) || books[i].summary.includes(req.body.inputText.toLowerCase())) {
+			if(books[i].title.toUpperCase().match(inputText) || books[i].summary.toUpperCase().match(inputText)) {
 				result.push({
 					id: books[i].id,
 					title: books[i].title,
