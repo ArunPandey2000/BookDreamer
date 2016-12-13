@@ -6,13 +6,13 @@ const db		= require(__dirname + '/database')
 
 //Get
 
-router.get('/', (req, res) => {
+router.get('/search', (req, res) => {
 	res.render('index')
 })
 
-//Post
+//Post Read PostgreSQL Database
 
-router.post('/', (req, res) => {
+router.post('/search', (req, res) => {
 	let publish = []
 	let inputText = req.body.inputText.toUpperCase()
 

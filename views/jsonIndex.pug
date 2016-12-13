@@ -1,0 +1,128 @@
+html
+	head
+		meta(charset="utf-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
+		meta(name="description" content="")
+		meta(name="author" content="")
+
+		title Find Your Read
+
+		link(href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css")
+		link(href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css")
+		link(href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css")
+		link(href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css")
+		link(href="magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css")
+		link(href="css/creative.min.css" rel="stylesheet" type="text/css")
+		link(href="css/style.css" rel="stylesheet" type="text/css")
+
+	body#page-top
+		nav#mainNav.navbar.navbar-default.navbar-fixed-top
+			div.container-fluid
+				div.navbar-header
+					button.navbar-toggle.collapsed(type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1")
+						span.sr-only Toggle Navigation
+						i.fa.fa-bars Menu
+					a.navbar-brand.page-scroll(href="#page-top") Find Your Next Read
+				
+				div.collapse.navbar-collapse#bs-example-navbar-collapse-1
+					ul.nav.navbar-nav.navbar-right
+						li
+							a.page-scroll(href="#about") Login
+
+		header
+			div.header-content
+				div.header-content-inner
+					h1#homeheading Find the next book to read!
+					hr
+					p.index Don't know what book to read next, are there too many choices? Search here for your next book based on your current preferences. The more filter options you choose, the better the recommendations will be. You can also login to connect to your Goodreads bookshelves and let us pick the next book from your to-read list.
+
+					div.row
+						div.col-md-12
+							div.input-group#adv-search
+								input.form-control(type="text" placeholder="Get recommendations! Click the arrow for more filter options!" name="inputText" form="form1")
+								div.input-group-btn
+									div.btn-group(role="group")
+										div.dropdown.dropdown-lg
+											button.btn.btn-default.dropdown-toggle(type="button" data-toggle="dropdown" aria-expanded="false")
+												span.caret
+											div.dropdown-menu.dropdown-menu-right(role="menu")
+												form.form-horizontal#form1(role="form" action="/" method="POST")
+													div.form-group
+														label(for="contain") Author
+														input.form-control(type="text" name="author")
+													div.form-group
+														label(for="filter") Genre
+														select.form-control(name="genre")
+															option(value="0" selected) Choose a genre
+															option(value="Fantasy") Fantasy
+															option(value="Literature") Literature
+															option(value="Non-Fiction") Non-Fiction
+															option(value="Drama") Drama
+															option(value="Fiction") Fiction
+													div.form-group
+														label(for="filter") Series &nbsp;
+														input(type="checkbox" value="true" name="series")
+													//- div.form-group
+													//- 	label(for="contain") Max Page Numbers
+													//- 	input.form-control(type="number" name="pagesMax" min="0" max="3000")
+													//- div.form-group
+													//- 	label(for="contain") Min Page Numbers
+													//- 	input.form-control(type="number" name="pagesMin" min="0" max="3000")
+													div.form-group
+														label(for="filter") Published in
+														br
+														div.inputGroup
+															label(for="filter") 2010- &nbsp;
+															input(type="checkbox" value="true" name="twoTen")
+														div.inputGroup
+															label(for="filter") &nbsp; 2000-2010 &nbsp;
+															input(type="checkbox" value="true" name="two")
+														div.inputGroup
+															label(for="filter") &nbsp; 1950-2000 &nbsp;
+															input(type="checkbox" value="true" name="nineFive")
+														div.inputGroup
+															label(for="filter") &nbsp; 1900-1950 &nbsp;
+															input(type="checkbox" value="true" name="nine")
+														div.inputGroup
+															label(for="filter") &nbsp; 1800-1900 &nbsp;
+															input(type="checkbox" value="true" name="eight")
+													div.form-group
+														label(for="filter") Language
+														select.form-control(name="language")
+															option(value="0" selected) Choose a language
+															option(value="eng") English
+															option(value="nld") Dutch
+															option(value="deu") German
+															option(value="fra") French
+															option(value="zho") Chinese
+													//- div.form-group
+													//- 	label(for="filter") Min Rating
+													//- 	br
+													//- 	div.inputGroup
+													//- 		label(for="filter") 5 Stars &nbsp;
+													//- 		input(type="radio" name="rating" value=4.75)
+													//- 	div.inputGroup
+													//- 		label(for="filter") 4 Stars &nbsp;
+													//- 		input(type="radio" name="rating" value=3.75)
+													//- 	div.inputGroup
+													//- 		label(for="filter") 3 Stars &nbsp;
+													//- 		input(type="radio" name="rating" value=2.75)
+													//- 	div.inputGroup
+													//- 		label(for="filter") 2 Stars &nbsp;
+													//- 		input(type="radio" name="rating" value=1.75)
+													//- 	div.inputGroup
+													//- 		label(for="filter") 1 Star &nbsp; &nbsp;
+													//- 		input(type="radio" name="rating" value=0.75)
+
+										button.btn.btn-primary(type="submit" form="form1")
+											span.glyphicon.glyphicon-search(aria-hidden="true")
+					br
+					button.btn.btn-primary.btn-xl.page-scroll(type="submit" form="form1") Search
+
+		script(src="jquery/jquery-3.1.1.min.js")
+		script(src="bootstrap/js/bootstrap.min.js")
+		script(src="jquery/jquery.easing.min.js")
+		script(src="scrollreveal/scrollreveal.min.js")
+		script(src="magnific-popup/jquery.magnific-popup.min.js")
+		script(src="js/creative.min.js")
