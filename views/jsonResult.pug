@@ -24,7 +24,7 @@ html
 							button#flip Sorted by Author
 							button#flip1 Sorted by Title
 							//- button#flip2 Sorted by Number of Pages
-							//- button#flip3 Sorted by Rating
+							button#flip3 Sorted by Rating
 
 
 						div.panel.panel-default.panel-body#panel(style="display: none")
@@ -39,9 +39,9 @@ html
 							ul#datalist
 								each thing in book
 									li
-										//- a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-										h4 #{thing.author} - #{thing.title}
-											span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
+										a(href="https://www.goodreads.com/search?q=" + thing.isbn)
+											h4 #{thing.author} - #{thing.title}
+												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
 											span #{thing.genre}; &nbsp;
 											//- span p.#{thing.pages}
@@ -61,9 +61,9 @@ html
 							ul#datalist1
 								each thing in book
 									li
-										//- a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-										h4 #{thing.title} - #{thing.author}
-											span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
+										a(href="https://www.goodreads.com/search?q=" + thing.isbn)
+											h4 #{thing.title} - #{thing.author}
+												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
 											span #{thing.genre}; &nbsp;
 										//- 	span p.#{thing.pages}
@@ -93,27 +93,26 @@ html
 						//- 				br
 						//- 	span#moreResults2 See more
 
-						//- div.panel.panel-default.panel-body#panel3(style="display: none")
+						div.panel.panel-default.panel-body#panel3(style="display: none")
 
-						//- 	- book.sort(function(a,b) {
-						//- 		- var textA = a.rating
-						//- 		- var textB = b.rating
-						//- 		- return (textA > textB) ? -1 : (textA < textB) ? 1 : 0; 
-						//- 	- })
+							- book.sort(function(a,b) {
+								- var textA = a.rating
+								- var textB = b.rating
+								- return (textA > textB) ? -1 : (textA < textB) ? 1 : 0; 
+							- })
 							
-						//- 	ul#datalist3
-						//- 		each thing in book
-						//- 			li
-						//- 				a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-						//- 					h4 #{thing.author} - #{thing.title}
-						//- 						span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
-						//- 				h5
-						//- 					each gen in thing.genre
-						//- 						span #{gen}, &nbsp;
-						//- 					span p.#{thing.pages}
-						//- 				p #{thing.summary}
-						//- 				br
-						//- 	span#moreResults3 See more
+							ul#datalist3
+								each thing in book
+									li
+										a(href="https://www.goodreads.com/search?q=" + thing.isbn)
+											h4 #{thing.author} - #{thing.title}
+												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
+										h5
+											span #{thing.genre}; &nbsp;
+										//- 	span p.#{thing.pages}
+										//- p #{thing.summary}
+										br
+							span#moreResults3 See more
 
 
 		footer

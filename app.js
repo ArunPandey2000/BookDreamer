@@ -17,7 +17,8 @@ app.set( 'views', __dirname + '/views' )
 // Routes
 let searchRoute 		= require(__dirname + '/routes/search')
 let resultRoute			= require(__dirname + '/routes/result')
-let searchJsonRoute		= require(__dirname + '/routes/searchJson')
+// let searchJsonRoute		= require(__dirname + '/routes/searchJson')
+let findJsonRoute		= require(__dirname + '/routes/findJson')
 // let updateRoute			= require(__dirname + '/routes/csvUpdateData')
 
 app.use( express.static('static'))
@@ -32,6 +33,7 @@ app.use(session({
 app.use( searchRoute )
 app.use( resultRoute )
 app.use( searchJsonRoute )
+app.use( findJsonRoute )
 // app.use( updateRoute )
 
 //listen port 8000
