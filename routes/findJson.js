@@ -58,23 +58,53 @@ router.post('/', (req, res) => {
 	// The query
 	let queryFilter = {}
 	if (inputText) queryFilter.title 	= inputText.toLowerCase()
-	if (author) queryFilter.author 	 	= author.toLowerCase()
+	if (author) queryFilter.authors	 	= author.toLowerCase()
 	if (tags)	queryFilter.tags 	 	= tags
 	if (series)	queryFilter.series 		= series
 	if (publishDate.length != 0) queryFilter.pubdate = publishDate
 	if (language) queryFilter.languages = language
 
-	jsonData[i].title.toLowerCase().indexOf(queryFilter.title)
+	// let exists = (data, filter) => {
+	// 	if (queryFilter[filter]) {
+	// 		if(data[filter].indexOf(queryFilter[filter]) == -1) {
+	// 			return true
+	// 		}
+	// 	}
+	// 	return false
+	// }
 
-	jsonData[i].author.toLowerCase().indexOf(queryFilter.author)
+	fs.readFile(__dirname + "/../books.json", 'utf-8', (err, data) => {
+		if(err) throw err
+		
+		let results = []
+		let jsonData = JSON.parse(data)
 
-	jsonData[i].tags.indexOf(queryFilter.tags) //Tags is an array when multiple inputs, string with one input???
+		// Check for authors
+		for(let i = 0; i < jsonData.length; i++) {
 
-	jsonData[i].series == ""
+			// Break for loop if author is not found
+			// exists(jsonData[i], 'authors') ? '' : run => { return }
 
-	jsonData[i].pubdate.slice(0,4) >= publishDate.slice(-1)[0]
+			// Break for loop if title is not found
+			// if !exists(jsonData[i], 'title') return
 
-	jsonData[i].languages.indexOf(queryFilter.languages)
+			// None were triggered false
+			results.push( jsonData[i] )
+
+		}
+	})
+
+	// jsonData[i].title.toLowerCase().indexOf(queryFilter.title)
+
+	// jsonData[i].author.toLowerCase().indexOf(queryFilter.author)
+
+	// jsonData[i].tags.indexOf(queryFilter.tags) //Tags is an array when multiple inputs, string with one input???
+
+	// jsonData[i].series == ""
+
+	// jsonData[i].pubdate.slice(0,4) >= publishDate.slice(-1)[0]
+
+	// jsonData[i].languages.indexOf(queryFilter.languages)
 
 
 	// source.indexOf('query')
