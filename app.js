@@ -32,7 +32,7 @@ app.use(session({
 // Routes
 app.use( searchRoute )
 app.use( resultRoute )
-app.use( searchJsonRoute )
+// app.use( searchJsonRoute )
 app.use( findJsonRoute )
 // app.use( updateRoute )
 
