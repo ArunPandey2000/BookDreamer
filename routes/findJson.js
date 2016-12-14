@@ -35,9 +35,9 @@ router.post('/', (req, res) => {
 	//Check if filter options are filled in or not
 
 	let author 	 = req.body.author || ""
-	let tags 	 = req.body.genre
+	let tags 	 = (req.body.genre > 0) ? req.body.genre : undefined
 	let series 	 = req.body.series || ""
-	let language = req.body.language
+	let language = (req.body.language.length > 0) ? req.body.language : undefined
 	let inputText = req.body.inputText
 	// let splitText = inputText.split(" ")
 
@@ -50,23 +50,25 @@ router.post('/', (req, res) => {
 	if (publishDate.length != 0) queryFilter.pubdate = publishDate
 	if (language) queryFilter.languages = language
 
-	let exists = (data, filter, callback) => {
-		console.log('exists actually triggers')
+	let exists = (data, callback) => {
+		let matchCounter = 0
+		let keysChecked = 0
 
-		if (queryFilter[filter]) {
-
-			// console.log(queryFilter[filter] + ' ' + filter +   ' query data came through')
-			// console.log('Checking ' + queryFilter[filter] + ' against ' + data[filter] )
-			// console.log('Result: ' + data[filter].indexOf(queryFilter[filter]) )
-
-			if( !(data[filter].toLowerCase().indexOf(queryFilter[filter]) == -1) ) {
-				// console.log(filter + ' match')
-				callback(data)
+		for(let key in queryFilter) {
+			keysChecked ++
+			if( !(data[key].indexOf(queryFilter[key]) == -1) ) {
+				matchCounter ++
 			}
-
+			console.log(data[key] + ' with ' + queryFilter[ key ])
+			console.log('Matched ' + matchCounter + ' out of ' + keysChecked)
 		}
-		// console.log( 'No match for ' + queryFilter[filter] + ' against ' + data[filter] )
-		callback()
+
+		if (matchCounter == keysChecked) {
+			callback(data)
+		} else {
+			callback()
+		}
+		
 	}
 
 	console.log('Loading file')
@@ -76,17 +78,17 @@ router.post('/', (req, res) => {
 		let results = []
 		let jsonData = JSON.parse(data)
 		console.log('Loaded ' + jsonData.length + ' books')
+		console.log('Query data:')
+		console.log(queryFilter)
 
 		// Check for authors
 		for(let i = 0; i < jsonData.length; i++) {
-			console.log('Json loop ' + i)
 
 			// Break for loop if author is not found
-			console.log('Checking for author')
-			exists(jsonData[i], 'authors', function(match) {
+			exists(jsonData[i], function(match) {
 				if (match) results.push(match)
 			})
-		}
+		} 
 		console.log(results)
 	})
 
