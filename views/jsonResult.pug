@@ -30,8 +30,8 @@ html
 						div.panel.panel-default.panel-body#panel(style="display: none")
 
 							- book.sort(function(a,b) {
-								- var textA = a.author.toUpperCase()
-								- var textB = b.author.toUpperCase()
+								- var textA = a.authors.toUpperCase()
+								- var textB = b.authors.toUpperCase()
 								- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
 							- })
 							
@@ -40,10 +40,10 @@ html
 								each thing in book
 									li
 										a(href="https://www.goodreads.com/search?q=" + thing.isbn)
-											h4 #{thing.author} - #{thing.title}
+											h4 #{thing.authors} - #{thing.title}
 												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
-											span #{thing.genre}; &nbsp;
+											span #{thing.tags}; &nbsp;
 											//- span p.#{thing.pages}
 										//- p #{thing.summary}
 										br
@@ -62,36 +62,14 @@ html
 								each thing in book
 									li
 										a(href="https://www.goodreads.com/search?q=" + thing.isbn)
-											h4 #{thing.title} - #{thing.author}
+											h4 #{thing.title} - #{thing.authors}
 												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
-											span #{thing.genre}; &nbsp;
+											span #{thing.tags}; &nbsp;
 										//- 	span p.#{thing.pages}
 										//- p #{thing.summary}
 										br
 							span#moreResults1 See more
-							
-						//- div.panel.panel-default.panel-body#panel2(style="display: none")
-
-						//- 	- book.sort(function(a,b) {
-						//- 		- var textA = a.pages
-						//- 		- var textB = b.pages
-						//- 		- return (textA < textB) ? -1 : (textA > textB) ? 1 : 0; 
-						//- 	- })
-							
-						//- 	ul#datalist2
-						//- 		each thing in book
-						//- 			li
-						//- 				a(href="https://www.goodreads.com/book/show/" + thing.linkid)
-						//- 					h4 #{thing.author} - #{thing.title}
-						//- 						span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
-						//- 				h5
-						//- 					each gen in thing.genre
-						//- 						span #{gen}, &nbsp;
-						//- 					span p.#{thing.pages}
-						//- 				p #{thing.summary}
-						//- 				br
-						//- 	span#moreResults2 See more
 
 						div.panel.panel-default.panel-body#panel3(style="display: none")
 
@@ -105,10 +83,10 @@ html
 								each thing in book
 									li
 										a(href="https://www.goodreads.com/search?q=" + thing.isbn)
-											h4 #{thing.author} - #{thing.title}
+											h4 #{thing.authors} - #{thing.title}
 												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
-											span #{thing.genre}; &nbsp;
+											span #{thing.tags}; &nbsp;
 										//- 	span p.#{thing.pages}
 										//- p #{thing.summary}
 										br

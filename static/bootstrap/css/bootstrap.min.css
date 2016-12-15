@@ -3118,7 +3118,7 @@ input[type=range] {
 
 select[multiple],
 select[size] {
-    height: auto
+    height: 65px;
 }
 
 input[type=file]:focus,
@@ -3230,7 +3230,7 @@ input[type=search] {
 }
 
 .form-group {
-    margin-bottom: 15px
+    margin-bottom: 10px;
 }
 
 .checkbox,
