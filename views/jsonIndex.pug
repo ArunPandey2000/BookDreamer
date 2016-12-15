@@ -14,7 +14,6 @@ html
 		link(href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css")
 		link(href="magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css")
 		link(href="css/creative.min.css" rel="stylesheet" type="text/css")
-		//- link(href="css/bootstrap-select.min.css" rel="stylesheet" type="text/css")
 		link(href="css/style.css" rel="stylesheet" type="text/css")
 
 	body#page-top
@@ -41,7 +40,7 @@ html
 					div.row
 						div.col-md-12
 							div.input-group#adv-search
-								input.form-control(type="text" placeholder="Get recommendations! Click the arrow for more filter options!" name="inputText" form="form1")
+								input.form-control(type="text" placeholder="Search on book title here! Click the arrow for more filter options!" name="inputText" form="form1")
 								div.input-group-btn
 									div.btn-group(role="group")
 										div.dropdown.dropdown-lg
@@ -53,41 +52,48 @@ html
 														label(for="contain") Author
 														input.form-control(type="text" name="author")
 													div.form-group
-														label(for="filter") Add a genre by holding the ctrl button!
+														label(for="filter") Genre <!-- multiple genres not working yet -->
 														select.form-control.selectpicker(name="genre" multiple)
 															option(value="" selected) All
 															option(value="Fantasy") Fantasy
 															option(value="Literature") Literature
-															option(value="Non-Fiction") Non-Fiction
+															option(value="Non") Non-Fiction
 															option(value="Drama") Drama
 															option(value="Fiction") Fiction
+															option(value="Mystery") Mystery
+															option(value="Detective") Detective
+															option(value="Science Fiction") Science Fiction
+															option(value="Young Adult") Young Adult
+															option(value="Romance") Romance
+															option(value="Histor") Historical
+															option(value="Travel") Travel
+															option(value="Child") Children
+															option(value="Thriller") Thriller
+															option(value="Legend") Myths & Legends
 													div.form-group
 														label(for="filter") Exclude Series &nbsp;
 														input(type="checkbox" value="false" name="series")
-													//- div.form-group
-													//- 	label(for="contain") Max Page Numbers
-													//- 	input.form-control(type="number" name="pagesMax" min="0" max="3000")
-													//- div.form-group
-													//- 	label(for="contain") Min Page Numbers
-													//- 	input.form-control(type="number" name="pagesMin" min="0" max="3000")
 													div.form-group
 														label(for="filter") Published in
 														br
 														div.inputGroup
-															label(for="filter") 2010- &nbsp;
+															label(for="filter") 2010-now &nbsp; &nbsp;
 															input(type="checkbox" value="true" name="twoTen")
 														div.inputGroup
-															label(for="filter") &nbsp; 2000-2010 &nbsp;
+															label(for="filter") 2000-2010 &nbsp;
 															input(type="checkbox" value="true" name="two")
 														div.inputGroup
-															label(for="filter") &nbsp; 1950-2000 &nbsp;
+															label(for="filter") 1950-2000 &nbsp;
 															input(type="checkbox" value="true" name="nineFive")
 														div.inputGroup
-															label(for="filter") &nbsp; 1900-1950 &nbsp;
+															label(for="filter") 1900-1950 &nbsp;
 															input(type="checkbox" value="true" name="nine")
 														div.inputGroup
-															label(for="filter") &nbsp; 1800-1900 &nbsp;
+															label(for="filter") 1800-1900 &nbsp;
 															input(type="checkbox" value="true" name="eight")
+														div.inputGroup
+															label(for="filter") early times-1800 &nbsp;
+															input(type="checkbox" value="true" name="zero")
 													div.form-group
 														label(for="filter") Choose a language
 														select.form-control(name="language")
@@ -97,34 +103,35 @@ html
 															option(value="deu") German
 															option(value="fra") French
 															option(value="zho") Chinese
-													//- div.form-group
-													//- 	label(for="filter") Min Rating
-													//- 	br
-													//- 	div.inputGroup
-													//- 		label(for="filter") 5 Stars &nbsp;
-													//- 		input(type="radio" name="rating" value=4.75)
-													//- 	div.inputGroup
-													//- 		label(for="filter") 4 Stars &nbsp;
-													//- 		input(type="radio" name="rating" value=3.75)
-													//- 	div.inputGroup
-													//- 		label(for="filter") 3 Stars &nbsp;
-													//- 		input(type="radio" name="rating" value=2.75)
-													//- 	div.inputGroup
-													//- 		label(for="filter") 2 Stars &nbsp;
-													//- 		input(type="radio" name="rating" value=1.75)
-													//- 	div.inputGroup
-													//- 		label(for="filter") 1 Star &nbsp; &nbsp;
-													//- 		input(type="radio" name="rating" value=0.75)
+															option(value="esp") Spanish
+													div.form-group
+														label(for="filter") Min Rating
+														br
+														div.inputGroup
+															label(for="filter") 5 Stars &nbsp;
+															input(type="radio" name="rating" value=4.75)
+														div.inputGroup
+															label(for="filter") 4 Stars &nbsp;
+															input(type="radio" name="rating" value=3.75)
+														div.inputGroup
+															label(for="filter") 3 Stars &nbsp;
+															input(type="radio" name="rating" value=2.75)
+														div.inputGroup
+															label(for="filter") 2 Stars &nbsp;
+															input(type="radio" name="rating" value=1.75)
+														div.inputGroup
+															label(for="filter") 1 Star &nbsp; &nbsp;
+															input(type="radio" name="rating" value=0.75)
 
 										button.btn.btn-primary(type="submit" form="form1")
 											span.glyphicon.glyphicon-search(aria-hidden="true")
 					br
 					button.btn.btn-primary.btn-xl.page-scroll(type="submit" form="form1") Search
-
+					br
+					h2=message
 		script(src="jquery/jquery-3.1.1.min.js")
 		script(src="bootstrap/js/bootstrap.min.js")
 		script(src="jquery/jquery.easing.min.js")
 		script(src="scrollreveal/scrollreveal.min.js")
 		script(src="magnific-popup/jquery.magnific-popup.min.js")
-		//- script(src="js/bootstrap-select.min.js")
 		script(src="js/creative.min.js")

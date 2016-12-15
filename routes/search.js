@@ -18,19 +18,22 @@ router.post('/search', (req, res) => {
 
 	//Put publishing years into an array
 	if(req.body.twoTen == "true") {
-		publish.push(2010)
+		publish.push(new Date().getFullYear(), 2010)
 	}
 	if(req.body.two == "true") {
-		publish.push(2000)
+		publish.push(2010, 2000)
 	}
 	if(req.body.nineFive == "true") {
-		publish.push(1950)
+		publish.push(2000, 1950)
 	}
 	if(req.body.nine == "true") {
-		publish.push(1900)
+		publish.push(1950, 1900)
 	}
 	if(req.body.eigth == "true") {
-		publish.push(1800)
+		publish.push(1900, 1800)
+	}
+	if(req.body.zero == "true") {
+		publish.push(1800, 0000)
 	}
 
 
@@ -63,7 +66,7 @@ router.post('/search', (req, res) => {
 	if (req.body.pagesMax && req.body.pagesMin) filter.pages = {$between: [req.body.pagesMin, req.body.pagesMax]}
 	if (req.body.pagesMax && req.body.pagesMin == "") filter.pages = {$between: [0, req.body.pagesMax]}
 	if (req.body.series) filter.series = req.body.series
-	if (publish.length != 0) filter.published = {$between: [publish.slice(-1)[0], new Date().getFullYear()]}
+	if (publish.length != 0) filter.published = {$between: [publish.slice(-1)[0], publish[0]]}
 	if (req.body.rating) filter.rating = {$between: [req.body.rating, 5]}
 
 	db.book.findAll({

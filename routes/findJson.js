@@ -5,7 +5,7 @@ const fs 		= require('fs')
 const request 	= require('request')
 
 router.get('/', (req,res) => {
-	res.render('jsonIndex')
+	res.render('jsonIndex', {message: req.query.message})
 })
 
 //Post
@@ -17,19 +17,22 @@ router.post('/', (req, res) => {
 	let publishDate = []
 
 	if(req.body.twoTen == "true") {
-		publishDate.push(2010)
+		publishDate.push(2017, 2010)
 	}
 	if(req.body.two == "true") {
-		publishDate.push(2000)
+		publishDate.push(2010, 2000)
 	}
 	if(req.body.nineFive == "true") {
-		publishDate.push(1950)
+		publishDate.push(2000, 1950)
 	}
 	if(req.body.nine == "true") {
-		publishDate.push(1900)
+		publishDate.push(1950, 1900)
 	}
 	if(req.body.eigth == "true") {
-		publishDate.push(1800)
+		publishDate.push(1900, 1800)
+	}
+	if(req.body.zero == "true") {
+		publishDate.push(1800, 0000)
 	}
 
 	//Check if filter options are filled in or not
@@ -47,16 +50,15 @@ router.post('/', (req, res) => {
 
 	// The query
 	let queryFilter = {}
-	if (!(inputText.indexOf(" "))) 	queryFilter.title 		= inputText.toLowerCase() //Multiple words is a problem!!
+	if (!(inputText.indexOf(" "))) 	queryFilter.title 		= inputText.toLowerCase()
 	if (splitText != "") 			queryFilter.title		= splitText
 	if (author) 					queryFilter.authors	 	= author.toLowerCase()
 	if (typeof tags === 'string') 	queryFilter.tags 		= tags.toLowerCase()
 	if (tags != undefined && tags.constructor == Array) queryFilter.tags = tags
-	if (series)						queryFilter.series 		= series //Is a problem!
-	if (publishDate.length != 0) 	queryFilter.pubdate 	= publishDate //Is a problem!!
+	if (series)						queryFilter.series 		= series
+	if (publishDate.length != 0) 	queryFilter.pubdate 	= publishDate
 	if (language) 					queryFilter.languages 	= language
 
-	console.log(queryFilter)
 
 	let exists = (data, callback) => {
 		let matchCounter = 0
@@ -64,21 +66,28 @@ router.post('/', (req, res) => {
 
 		for(let key in queryFilter) {
 			keysChecked ++
-			if( !(queryFilter[key].indexOf(", ") == -1)) {
-				//Not working yet, is searching but not comparing right
-				if( new RegExp(queryFilter[key].join("|"), "i").test(data[key])) {
-					console.log("Array")
-					matchCounter ++
+			if( queryFilter[key].constructor == Array ) {
+				//Problem adds result of if and else together instead of filtering
+				if( queryFilter[key][0] >= 1) {
+					if( (data[key].slice(0, 4) >= queryFilter[key].slice(-1)[0]) && (data[key].slice(0, 4) <= queryFilter[key][0]) ) {
+						matchCounter ++
+					}
 				}
+				else {
+					for( let i = 0; i < queryFilter[key].length; i++ ) {
+						if( !(data[key].toLowerCase().indexOf(queryFilter[key][i].toLowerCase()) == -1) ) {
+							matchCounter ++
+						}
+					}
+				}			
 			}
 			else {
 				if( !(data[key].toLowerCase().indexOf(queryFilter[key]) == -1) ) {
 					matchCounter ++
-					console.log("This is a String")
 				}
 			}
-			console.log(data[key] + ' with ' + queryFilter[ key ])
-			console.log('Matched ' + matchCounter + ' out of ' + keysChecked)
+			// console.log(data[key] + ' with ' + queryFilter[ key ])
+			// console.log('Matched ' + matchCounter + ' out of ' + keysChecked)
 		}
 
 		if (matchCounter == keysChecked) {
@@ -89,18 +98,13 @@ router.post('/', (req, res) => {
 		
 	}
 
-	// if( new RegExp(queryFilter[key].join("|")).test(data[key]) ) {
-	// 			console.log("Array")
-	// 			matchCounter ++
-	// 		}
-
 	console.log('Loading file')
 	fs.readFile(__dirname + "/../books.json", 'utf-8', (err, data) => {
 		if(err) throw err
-		// console.log('Loaded file complete')
+		console.log('Loaded file complete')
 		let results = []
 		let jsonData = JSON.parse(data)
-		// console.log('Loaded ' + jsonData.length + ' books')
+		console.log('Loaded ' + jsonData.length + ' books')
 		// console.log('Query data:')
 		// console.log(queryFilter)
 
@@ -113,6 +117,12 @@ router.post('/', (req, res) => {
 			})
 		} 
 		console.log(results)
+		if(!(results.length == 0)) {
+			res.render("jsonResult", {book: results})
+		}
+		else {
+			res.redirect('/?message=' + encodeURIComponent("No results found, try again with less filter options, or don't fill in anything to get the whole list!"))
+		}
 	})
 }) 
 
