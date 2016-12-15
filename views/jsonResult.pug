@@ -7,6 +7,12 @@ html
 		link(href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css")
 		link(href="css/business-casual.css" rel="stylesheet" type="text/css")
 		link(href="css/style.css" rel="stylesheet" type="text/css")
+		script.
+			function getReviews(result) {
+				var scriptTag = document.createElement('script')
+				scriptTag.src = "https://www.goodreads.com/book/isbn/" + thing.isbn + "?callback=getReviews&format=json&user_id=5777448"
+				document.getElementsByTagName('head')[0].appendChild(scriptTag)
+			}
 	body
 		div.container
 			div.row

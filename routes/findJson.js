@@ -10,6 +10,16 @@ router.get('/', (req,res) => {
 
 //Post
 
+function getReviews(isbn) {
+	request({
+		method: 'Get',
+		uri: "https://www.goodreads.com/book/isbn/",
+		format: 'json',
+		user_id: 5777448,
+		isbn: isbn
+	})
+}
+
 router.post('/', (req, res) => {
 
 	//Put publishing years into an array
@@ -122,8 +132,11 @@ router.post('/', (req, res) => {
 		}
 		else {
 			res.redirect('/?message=' + encodeURIComponent("No results found, try again with less filter options, or don't fill in anything to get the whole list!"))
-		}
+		} 
+		// for(let j = 0; j < results.length; i++) {
+		// 	getReviews(results[i].isbn)
+		// }
 	})
-}) 
+})
 
 module.exports = router
