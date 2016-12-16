@@ -110,3 +110,30 @@ ul .rating-45 {
 span#moreResults, #moreResults1, #moreResults2, #moreResults3 {
   cursor: pointer;
   font-size: 24px; }
+
+#goodreads-widget {
+  font-family: georgia, serif;
+  width: 575px; }
+  #goodreads-widget h1 {
+    font-weight: normal;
+    font-size: 16px;
+    border-bottom: 1px solid #BBB596;
+    margin-bottom: 0; }
+  #goodreads-widget a {
+    text-decoration: none;
+    color: #660; }
+  #goodreads-widget a:hover {
+    text-decoration: underline; }
+  #goodreads-widget a:active {
+    color: #660; }
+  #goodreads-widget iframe {
+    background-color: transparent; }
+  #goodreads-widget #gr_footer {
+    width: 100%;
+    border-top: 1px solid #BBB596;
+    text-align: right; }
+  #goodreads-widget .gr_branding {
+    color: #382110;
+    font-size: 11px;
+    text-decoration: none;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }

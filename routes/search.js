@@ -16,6 +16,8 @@ router.post('/search', (req, res) => {
 	let publish = []
 	let inputText = req.body.inputText.toUpperCase()
 
+	console.log(req.body.series)
+
 	//Put publishing years into an array
 	if(req.body.twoTen == "true") {
 		publish.push(new Date().getFullYear(), 2010)
@@ -45,14 +47,7 @@ router.post('/search', (req, res) => {
 	if(req.body.language == 0) {
 		req.body.language = undefined
 	}
-	
-	//Give series properties true/false
-	if(req.body.series == undefined) {
-		req.body.series = false
-	}
-	else {
-		req.body.series = true
-	}
+
 
 	//Object for filter options
 	let filter = {
@@ -69,25 +64,15 @@ router.post('/search', (req, res) => {
 	if (publish.length != 0) filter.published = {$between: [publish.slice(-1)[0], publish[0]]}
 	if (req.body.rating) filter.rating = {$between: [req.body.rating, 5]}
 
+	console.log(filter)
+
 	db.book.findAll({
 		where: filter	
 	}).then(books=>{
 		let result = []
 		for(let i = 0; i < books.length; i++){
 			if(books[i].title.toUpperCase().match(inputText) || books[i].summary.toUpperCase().match(inputText)) {
-				result.push({
-					id: books[i].id,
-					title: books[i].title,
-					author: books[i].author,
-					genre: books[i].genre,
-					pages: books[i].pages,
-					linkid: books[i].linkid,
-					series: books[i].series,
-					published: books[i].published,
-					language: books[i].language,
-					rating: books[i].rating,
-					summary: books[i].summary
-				})
+				result.push(books[i])
 			}
 		}
 		if(result.length != 0) {
