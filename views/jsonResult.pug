@@ -7,12 +7,6 @@ html
 		link(href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css")
 		link(href="css/business-casual.css" rel="stylesheet" type="text/css")
 		link(href="css/style.css" rel="stylesheet" type="text/css")
-		script.
-			function getReviews(result) {
-				var scriptTag = document.createElement('script')
-				scriptTag.src = "https://www.goodreads.com/book/isbn/" + thing.isbn + "?callback=getReviews&format=json&user_id=5777448"
-				document.getElementsByTagName('head')[0].appendChild(scriptTag)
-			}
 	body
 		div.container
 			div.row
@@ -52,7 +46,14 @@ html
 											span #{thing.tags}; &nbsp;
 											//- span p.#{thing.pages}
 										//- p #{thing.summary}
-										br
+										//- div#goodreads-widget
+										//- 	div#gr_header
+										//- 		h1
+										//- 			a(href="https://www.goodreads.com/search?q=" + thing.isbn) Goodreads Reviews
+										//- 	iframe#the_iframe(src="https://www.goodreads.com/api/reviews_widget_iframe?did=21508&format=html&header_text=Goodreads+Reviews&isbn=" + thing.isbn + "&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444" width="600" height="300" frameborder="1")
+										//- 	div#gr_footer
+										//- 		a.gr_branding(target="_blank" href="https://www.goodreads.com/search?q=" + thing.isbn + "&utm_medium=api&utm_source=reviews_widget") Reviews from Goodreads.com
+
 							span#moreResults See more
 
 					
@@ -74,7 +75,13 @@ html
 											span #{thing.tags}; &nbsp;
 										//- 	span p.#{thing.pages}
 										//- p #{thing.summary}
-										br
+										//- div#goodreads-widget
+										//- 	div#gr_header
+										//- 		h1
+										//- 			a(href="https://www.goodreads.com/search?q=" + thing.isbn) Goodreads Reviews
+										//- 	iframe#the_iframe(src="https://www.goodreads.com/api/reviews_widget_iframe?did=21508&format=html&header_text=Goodreads+Reviews&isbn=" + thing.isbn + "&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444" width="600" height="300" frameborder="1")
+										//- 	div#gr_footer
+										//- 		a.gr_branding(target="_blank" href="https://www.goodreads.com/search?q=" + thing.isbn + "&utm_medium=api&utm_source=reviews_widget") Reviews from Goodreads.com
 							span#moreResults1 See more
 
 						div.panel.panel-default.panel-body#panel3(style="display: none")
@@ -95,7 +102,13 @@ html
 											span #{thing.tags}; &nbsp;
 										//- 	span p.#{thing.pages}
 										//- p #{thing.summary}
-										br
+										//- div#goodreads-widget
+										//- 	div#gr_header
+										//- 		h1
+										//- 			a(href="https://www.goodreads.com/search?q=" + thing.isbn) Goodreads Reviews
+										//- 	iframe#the_iframe(src="https://www.goodreads.com/api/reviews_widget_iframe?did=21508&format=html&header_text=Goodreads+Reviews&isbn=" + thing.isbn + "&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444" width="600" height="300" frameborder="1")
+										//- 	div#gr_footer
+										//- 		a.gr_branding(target="_blank" href="https://www.goodreads.com/search?q=" + thing.isbn + "&utm_medium=api&utm_source=reviews_widget") Reviews from Goodreads.com
 							span#moreResults3 See more
 
 
@@ -108,4 +121,3 @@ html
 		script(src="jquery/jquery-3.1.1.min.js")
 		script(src="bootstrap/js/bootstrap.min.js")
 		script(src="js/resultpage.js")
-			
