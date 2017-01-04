@@ -8,18 +8,6 @@ router.get('/', (req,res) => {
 	res.render('jsonIndex', {message: req.query.message})
 })
 
-//Post
-
-// function getReviews(isbn) {
-// 	request({
-// 		method: 'Get',
-// 		uri: "https://www.goodreads.com/book/isbn/",
-// 		format: 'json',
-// 		user_id: 5777448,
-// 		isbn: isbn
-// 	})
-// }
-
 router.post('/', (req, res) => {
 
 	//Put publishing years into an array
@@ -52,17 +40,10 @@ router.post('/', (req, res) => {
 	let series 	 = req.body.series || ""
 	let language = (req.body.language.length > 0) ? req.body.language : undefined
 	let inputText = req.body.inputText
-	// let splitText = ""
-
-	// if (inputText.indexOf(" ")) {
-	// 	splitText = inputText.split(" ")
-	// 	splitText.push(inputText)
-	// }
 
 	// The query
 	let queryFilter = {}
 	if (inputText) 					queryFilter.title 		= inputText.toLowerCase()
-	// if (splitText != "") 			queryFilter.title		= splitText
 	if (author) 					queryFilter.authors	 	= author.toLowerCase()
 	if (typeof tags === 'string') 	queryFilter.tags 		= tags.toLowerCase()
 	if (tags != undefined && tags.constructor == Array) queryFilter.tags = tags
@@ -95,8 +76,6 @@ router.post('/', (req, res) => {
 					matchCounter ++
 				}
 			}
-			// console.log(data[key] + ' with ' + queryFilter[ key ])
-			// console.log('Matched ' + matchCounter + ' out of ' + keysChecked)
 		}
 
 		if (matchCounter == keysChecked) {
@@ -107,15 +86,10 @@ router.post('/', (req, res) => {
 		
 	}
 
-	console.log('Loading file')
 	fs.readFile(__dirname + "/../books.json", 'utf-8', (err, data) => {
 		if(err) throw err
-		console.log('Loaded file complete')
 		let results = []
 		let jsonData = JSON.parse(data)
-		// console.log('Loaded ' + jsonData.length + ' books')
-		// console.log('Query data:')
-		// console.log(queryFilter)
 
 		// Check for authors
 		for(let i = 0; i < jsonData.length; i++) {
@@ -125,16 +99,12 @@ router.post('/', (req, res) => {
 				if (match) results.push(match)
 			})
 		} 
-		console.log(results)
 		if(!(results.length == 0)) {
 			res.render("jsonResult", {book: results})
 		}
 		else {
 			res.redirect('/?message=' + encodeURIComponent("No results found, try again with other search options, or don't fill in anything to get the whole list!"))
 		} 
-		// for(let j = 0; j < results.length; i++) {
-		// 	getReviews(results[i].isbn)
-		// }
 	})
 })
 

@@ -23,7 +23,6 @@ html
 						div.filterButton(style="text-align: center")
 							button#flip Sorted by Author
 							button#flip1 Sorted by Title
-							//- button#flip2 Sorted by Number of Pages
 							button#flip3 Sorted by Rating
 
 
@@ -37,6 +36,7 @@ html
 							
 							
 							ul#datalist
+								//- Widget makes app very slow because of size database!
 								each thing in book
 									li
 										a(href="https://www.goodreads.com/search?q=" + thing.isbn)
@@ -44,8 +44,7 @@ html
 												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
 											span #{thing.tags}; &nbsp;
-											//- span p.#{thing.pages}
-										//- p #{thing.summary}
+
 										//- div#goodreads-widget
 										//- 	div#gr_header
 										//- 		h1
@@ -73,15 +72,6 @@ html
 												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
 											span #{thing.tags}; &nbsp;
-										//- 	span p.#{thing.pages}
-										//- p #{thing.summary}
-										//- div#goodreads-widget
-										//- 	div#gr_header
-										//- 		h1
-										//- 			a(href="https://www.goodreads.com/search?q=" + thing.isbn) Goodreads Reviews
-										//- 	iframe#the_iframe(src="https://www.goodreads.com/api/reviews_widget_iframe?did=21508&format=html&header_text=Goodreads+Reviews&isbn=" + thing.isbn + "&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444" width="600" height="300" frameborder="1")
-										//- 	div#gr_footer
-										//- 		a.gr_branding(target="_blank" href="https://www.goodreads.com/search?q=" + thing.isbn + "&utm_medium=api&utm_source=reviews_widget") Reviews from Goodreads.com
 							span#moreResults1 See more
 
 						div.panel.panel-default.panel-body#panel3(style="display: none")
@@ -100,15 +90,6 @@ html
 												span(class="rating-static rating-" + (Math.round(thing.rating * 2) / 2 * 10))
 										h5
 											span #{thing.tags}; &nbsp;
-										//- 	span p.#{thing.pages}
-										//- p #{thing.summary}
-										//- div#goodreads-widget
-										//- 	div#gr_header
-										//- 		h1
-										//- 			a(href="https://www.goodreads.com/search?q=" + thing.isbn) Goodreads Reviews
-										//- 	iframe#the_iframe(src="https://www.goodreads.com/api/reviews_widget_iframe?did=21508&format=html&header_text=Goodreads+Reviews&isbn=" + thing.isbn + "&links=660&min_rating=&num_reviews=&review_back=ffffff&stars=000000&stylesheet=&text=444" width="600" height="300" frameborder="1")
-										//- 	div#gr_footer
-										//- 		a.gr_branding(target="_blank" href="https://www.goodreads.com/search?q=" + thing.isbn + "&utm_medium=api&utm_source=reviews_widget") Reviews from Goodreads.com
 							span#moreResults3 See more
 
 
