@@ -1,5 +1,5 @@
 {
-  "name": "book-recommendation-app",
+  "name": "Book Dreamer",
   "version": "0.0.1",
   "description": "Book recommendation app",
   "main": "app.js",
@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LauraXiulan/book-recommendation-app.git"
+    "url": "git+https://github.com/arunpandey2000/BookDreamer.git"
   },
-  "author": "Laura",
+  "author": "Arun Pandey",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/LauraXiulan/book-recommendation-app/issues"
