@@ -12,6 +12,9 @@
     "url": "git+https://github.com/arunpandey2000/BookDreamer.git"
   },
   "author": "Arun Pandey",
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
