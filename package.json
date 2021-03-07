@@ -13,10 +13,6 @@
   },
   "author": "Arun Pandey",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/LauraXiulan/book-recommendation-app/issues"
-  },
-  "homepage": "https://github.com/LauraXiulan/book-recommendation-app#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
     "csvtojson": "^1.0.3",
