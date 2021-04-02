@@ -1,0 +1,42 @@
+<div *ngIf="product" class="product-page">
+  <div class="product-page-container">
+    <ol class="product-breadcrumbs">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item">/ <a routerLink="/">Plates</a></li>
+      <li class="breadcrumb-item">/ {{ product.title }}</li>
+    </ol>
+    <div class="row">
+      <div class="col-md-8">
+        <div
+          class="product-details-image"
+          [ngStyle]="{ 'background-image': 'url(' + product.image_url + ')' }"
+        ></div>
+      </div>
+      <div class="col-md-4">
+        <div class="product-details-row">
+          <div class="product-brand">{{ product.authors }}</div>
+          <h1 class="product-title">{{ product.title }}</h1>
+
+          <div class="product-price">{{ product.average_rating }}</div>
+          <div class="product-description">{{ product.language_code }}</div>
+          <div class="product-brand">
+            {{ product.original_publication_year }}
+          </div>
+        </div>
+
+        <div class="product-details-button">
+          <quantity-control
+            [quantity]="quantity"
+            (onChange)="changeQuantity($event)"
+          ></quantity-control>
+          <div
+            class="product-cart-button button button-primary button-large"
+            (click)="addToCart(product)"
+          >
+            Add to Favourites
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,85 @@
+<div class="header-image">
+  <div class="header-block">
+    <div class="header-text">
+      <div class="header-text-title">BOOK DREAMER</div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras nec mollis
+        sem. Etiam id luctus libero. Vivamus vulputate urna eget velit iaculis,
+        et interdum elit pellentesque. Duis porta nunc neque, nec volutpat erat
+        lacinia a.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="layout-container">
+  <div class="product-grid">
+    <div class="col-md-4 col-sm-6" *ngFor="let book of books; let i = index">
+      <div class="card">
+        <div class="card-img-container">
+          <div class="card-img">
+            <!-- <div
+          class="card-img"
+        
+        > -->
+
+            <span class="date">{{ book.original_publication_year }}</span>
+            <h1>{{ book.original_title }}</h1>
+          </div>
+        </div>
+        <div class="card-body">
+          <p>
+            <b>Be who you want to be</b>
+            You don’t have to be in "a box". Let go of your imagined
+            self-concept. Who you really are cannot be defined. Forget what you
+            think you are.
+          </p>
+          <div class="card-link">
+            <div
+              class="button button-primary"
+              [routerLink]="['../product', i + 1]"
+            >
+              View Details
+            </div>
+            <div class="button button-primary" (click)="addToCart(book)">
+              Add To Favourites
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="layout-container">
+  <div class="product-grid">
+    <div class="col-md-4 col-sm-6" *ngFor="let book of books; let i = index">
+      <div class="image-container">
+        <div
+          class="product-image"
+          [ngStyle]="{
+            'background-image': 'url(' + book.small_image_url + ') '
+          }"
+        ></div>
+        <div class="overlay">
+          <div
+            class="button button-primary"
+            [routerLink]="['../product', i + 1]"
+          >
+            View Details
+          </div>
+          <div class="button button-primary" (click)="addToCart(book)">
+            Add To Cart
+          </div>
+        </div>
+      </div>
+      <div class="product-details">
+        <div class="product-brand">{{ book.author }}</div>
+        <div class="product-title">{{ book.title }}</div>
+        <div class="product-price">
+          {{ book.average_rating }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
