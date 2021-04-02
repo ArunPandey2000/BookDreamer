@@ -1,5 +1,5 @@
 // Set up libraries
-const sequelize = require('sequelize');
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
